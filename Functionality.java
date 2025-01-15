@@ -1,5 +1,7 @@
 public  class Functionality {
-    public static void moveDisk(Tower startTower, Tower endTower){
+    public Functionality(){}
+
+    public  void moveDisk(Tower startTower, Tower endTower){
        Disk disk = startTower.getStack().getLast(); //store last disk
 
        if(checkValidMove(disk, endTower)){  
@@ -12,10 +14,10 @@ public  class Functionality {
     }
 
     //check tower's array and compare if the last disk works 
-    public static Boolean checkValidMove(Disk disk, Tower tower){   //disk we trying to add, tower the disk is going to
+    public  Boolean checkValidMove(Disk disk, Tower tower){   //disk we trying to add, tower the disk is going to
         int stackSize = tower.getStack().size();        //to check if theres any disks on the tower already
-        Disk lastDisk = tower.getStack().getLast();     //last disk on tower we are trying to move to
-        if(stackSize >= 0){
+        if(stackSize > 0){
+            Disk lastDisk = tower.getStack().getLast();     //last disk on tower we are trying to move to
             if(disk.getValue() < lastDisk.getValue()){
                 return true;
             }
@@ -25,7 +27,7 @@ public  class Functionality {
     }
 
     //checks if the game is won
-    public static void checkCompleted(Tower lastTower, int numberOfDisks){
+    public  void checkCompleted(Tower lastTower, int numberOfDisks){
         //check last tower's array
         // if the length of the linkedList is equal to the number of disks, then the game is won
         int lastTowerStackSize = lastTower.getStack().size();
