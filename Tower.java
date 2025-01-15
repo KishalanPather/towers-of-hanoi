@@ -1,28 +1,28 @@
+import java.util.LinkedList;
+
 public class Tower {
     private int towerNumber;
-    private Disk[] order;
-    private int numberOfDisks;
+    private LinkedList<Disk> stack;
 
-    public Tower(int towerNumber, int numberOfDisks){
+    public Tower(int towerNumber){
         this.towerNumber = towerNumber;
-        this.order = new Disk[numberOfDisks];
+        this.stack = new LinkedList<Disk>();
     }
 
     public int getTowerNumber(){
         return this.towerNumber;
     }
 
-    public Disk[] getOrderArr(){
-        return this.order;
+    public LinkedList<Disk> getStack(){
+        return this.stack;
     }
 
-    public void addToOrderArr(Disk disk){
-        // add to the first open slot
-        // might need to make a new function to that
+    public void addToStack(Disk disk){
+        this.stack.addLast(disk);
     }
 
-    public void removeFromOrderArr(){
-        //remove last element
+    public void removeFromStack(){
+        this.stack.removeLast();
     }
 
     @Override

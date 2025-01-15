@@ -1,13 +1,36 @@
 public  class Functionality {
-    public static void moveDisk(Disk disk, Tower tower){
-        //move disk
+    public static void moveDisk(Tower startTower, Tower endTower){
+       Disk disk = startTower.getStack().getLast(); //store last disk
+
+       if(checkValidMove(disk, endTower)){  
+        startTower.removeFromStack();                //remove from start tower
+        endTower.addToStack(disk);                  //place on endtower
+       } else{
+        System.out.println("Invalid move: cannot put a bigger disk on top of a smaller disk.");
+       }
+
     }
 
-    public static void checkCompleted(Disk disk, Tower tower){
-        //check tower's array and compare if the last disk works 
+    //check tower's array and compare if the last disk works 
+    public static Boolean checkValidMove(Disk disk, Tower tower){   //disk we trying to add, tower the disk is going to
+        int stackSize = tower.getStack().size();        //to check if theres any disks on the tower already
+        Disk lastDisk = tower.getStack().getLast();     //last disk on tower we are trying to move to
+        if(stackSize >= 0){
+            if(disk.getValue() < lastDisk.getValue()){
+                return true;
+            }
+            return false;
+        }
+        return true; 
     }
 
-    public static void checkCompleted(Tower lasTower){
+    //checks if the game is won
+    public static void checkCompleted(Tower lastTower, int numberOfDisks){
         //check last tower's array
+        // if the length of the linkedList is equal to the number of disks, then the game is won
+        int lastTowerStackSize = lastTower.getStack().size();
+        if(lastTowerStackSize == numberOfDisks){
+            System.out.println("Congratulations, You solved it!");
+        }
     }
 }
