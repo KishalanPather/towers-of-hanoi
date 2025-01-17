@@ -28,12 +28,14 @@ public  class Functionality {
     }
 
     //checks if the game is won
-    public  void checkCompleted(Tower lastTower, int numberOfDisks){
+    public Boolean checkCompleted(Tower lastTower, int numberOfDisks){
         //check last tower's array
         // if the length of the linkedList is equal to the number of disks, then the game is won
         int lastTowerStackSize = lastTower.getStack().size();
         if(lastTowerStackSize == numberOfDisks){
             System.out.println("Congratulations, You solved it!");
+            return true;
         }
+        return false;
     }
 }
